@@ -1,0 +1,18 @@
+<html>
+   <body>
+<head>
+    <title>Chatbot</title>
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+<div class="container">
+	<label class="travel">Travel in Myanmar</label>
+	<br><br><br><br>
+      <form action = "http://localhost:5000/chatbot" method = "POST">
+	
+         <label class = "user">{{ uname }}</label> <input type = "text" name = "chat" placeholder="Type here ..." class="input1" required = "required" autofocus="autofocus"/>
+	<input type="hidden" value="{{ uname }}" name="uname"/>
+	&nbsp<input type = "submit" value = "SEND" class="btn"/>
+      </form>
+</div>
+</body>
+</html>

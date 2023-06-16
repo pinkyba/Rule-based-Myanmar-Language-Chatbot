@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  padding: 0;
+  /*background-color: #17a2b8; */
+  background: url(/static/css/img/b.jpg) no-repeat center center fixed;
+  height: 100vh;
+background-color: #FFFFFF;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#login .container #login-row #login-column #login-box {
+  margin-top: 120px;
+  max-width: 600px;
+  height: 350px;
+  border: 2px solid #F0F8FF;
+  background-color: #F0F8FF;
+  border-radius: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -85px;
+}
+.textedit{
+	color: darkblue;
+	font-size: 17px;
+}

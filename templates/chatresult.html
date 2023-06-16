@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+ <title>Chatbot</title>
+<head>
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/style.css') }}">
+	
+  </head>
+   <body>
+<div class="container1">
+	<label class="travel1">Travel in Myanmar</label>
+	<a href="{{ url_for('logout') }}"><input type="submit" name="submit" class="logout" value="Logout"></a><br><br><br>
+	<div class="msg-box" id="control_scroll">
+
+	<p hidden> {{ hletter }}</p>
+     	{% for i in range(outLen) %}
+		
+		
+			{% if i%2 == 0 %}
+			
+			<div class="box">
+				<img src="{{ url_for('static', filename='css/img/user1.png') }}" class="u-img"/>
+				<div class="u-info">
+				<div class="u-name">{{ uname }}</div>
+				<div class="u-msg">
+				<div class="message-body1">
+    					{{ out[i][0] }}
+  				</div>
+				</div>
+				<div class="u-date">{{ date }}</div>
+				</div>
+			</div>
+			{% endif %}
+			{% if i%2 != 0 %}
+				{% if out[i]|length == 3 and out[i][2] == "ok" %}
+				<div class="box">
+					<img src="{{ url_for('static', filename='css/img/bot1.png') }}" class="c-img"/>
+					<div class="c-info">
+					<div class="c-msg">
+					<div class="message-body">
+    						{{ out[i][0] }}
+  					</div>
+					</div>
+					<div class="c-date">{{ date }}</div>
+					</div>
+				</div>
+				<div class="box">
+					<img src="{{ url_for('static', filename='css/img/bot1.png') }}" class="c-img"/>
+					<div class="c-info">
+					<div class="c-msg">
+					<div class="message-body2">
+    						<a href="http://maps.google.com/?q={{ out[i][1] }}" target="_blank"><img src="{{ url_for('static', filename='css/img/gm.png') }}" class="g-img"/></a>
+  					</div>
+					</div>
+					<div class="c-date">{{ date }}</div>
+					</div>
+				</div>
+				{% elif out[i]|length == 3 and out[i][2] == "youtube" %}
+				<div class="box">
+					<img src="{{ url_for('static', filename='css/img/bot1.png') }}" class="c-img"/>
+					<div class="c-info">
+					<div class="c-msg">
+					<div class="message-body">
+    						{{ out[i][0] }}
+  					</div>
+					</div>
+					<div class="c-date">{{ date }}</div>
+					</div>
+				</div>
+				<div class="box">
+					<img src="{{ url_for('static', filename='css/img/bot1.png') }}" class="c-img"/>
+					<div class="c-info">
+					<div class="c-msg">
+					<div class="message-body2">
+						<iframe src="https://www.youtube.com/embed/{{ out[i][1] }}" frameborder="0" allowfullscreen class="y-video" target="_blank"></iframe>
+  					</div>
+					</div>
+					<div class="c-date">{{ date }}</div>
+					</div>
+				</div>
+				{% elif out[i]|length == 2 %}
+				<div class="box">
+					<img src="{{ url_for('static', filename='css/img/bot1.png') }}" class="c-img"/>
+					<div class="c-info">
+					<div class="c-msg">
+					<div class="message-body">
+    						{{ out[i][0] }}
+  					</div>
+					</div>
+					<div class="c-date">{{ date }}</div>
+					</div>
+				</div>
+				<div class="box">
+					<img src="{{ url_for('static', filename='css/img/bot1.png') }}" class="c-img"/>
+					<div class="c-info">
+					<div class="c-msg">
+					<div class="message-body">
+    						{{ out[i][1] }}
+  					</div></div>
+					<div class="c-date">{{ date }}</div>
+					</div>
+				</div>
+				{% elif out[i]|length > 1 and hletter == "hotel" %}
+				<div class="box">
+					<img src="{{ url_for('static', filename='css/img/bot1.png') }}" class="c-img"/>
+					<div class="c-info">
+					<div class="c-msg">
+					<div class="message-body">
+    						{{ out[i][4] }}
+  					</div></div>
+					<div class="c-date">{{ date }}</div><br>
+					</div>
+				</div>
+				<div class="box">
+					<img src="{{ url_for('static', filename='css/img/bot1.png') }}" class="c-img"/>
+					<div class="c-info">
+					<div class="c-msg">
+					<div class="message-body">
+						<div class="search">
+							<a href="https://www.google.com/search?q={{ out[i][2] }}" target="_blank"> 
+							<P><img src="{{ url_for('static', filename='img/') }}{{ out[i][3] }}" class="s-img"></P> 
+							<label style="font-size:10pt;"> {{ out[i][0] }} </label>
+							<label style="font-size:10pt;"> {{ out[i][1] }} </label></a>
+						</div>
+					</div></div>
+					<div class="c-date">{{ date }}</div>
+					</div>
+				</div>
+				
+				{% elif out[i]|length > 1 %}
+				<div class="box">
+					<img src="{{ url_for('static', filename='css/img/bot1.png') }}" class="c-img"/>
+					<div class="c-info">
+					<div class="c-msg">
+					<div class="message-body">
+    						{{ out[i][4] }}
+  					</div></div>
+					<div class="c-date">{{ date }}</div><br>
+					</div>
+				</div>
+				<div class="box">
+					<img src="{{ url_for('static', filename='css/img/bot1.png') }}" class="c-img"/>
+					<div class="c-info">
+					<div class="c-msg">
+					<div class="message-body">
+						<div class="search">
+							<a href="{{out[i][2]}}"> 
+							<P><img src="{{ url_for('static', filename='img/') }}{{ out[i][3] }}" class="s-img"></P> 
+							<label style="font-size:10pt;"> {{ out[i][0] }} </label>
+							<label style="font-size:10pt;"> {{ out[i][1] }} </label></a>
+						</div>
+					</div></div>
+					<div class="c-date">{{ date }}</div>
+					</div>
+				</div>
+				
+				{% endif %}
+				{% if out[i]|length <= 1 %}
+				<div class="box">
+					<img src="{{ url_for('static', filename='css/img/bot1.png') }}" class="c-img"/>
+					<div class="c-info">
+					<div class="c-msg">
+					<div class="message-body">
+    						{{ out[i][0] }}
+  					</div></div>
+					<div class="c-date">{{ date }}</div>
+					</div>
+				</div>
+				{% endif %}
+			{% endif %}
+		
+	{%endfor%}
+	</div>
+
+<br><br>
+	<form action = "http://localhost:5000/chatbot" method = "POST">
+	
+	
+         <div class="user1div"><label class = "user1">{{ uname }}</label></div> <input type = "text" name = "chat" class="input2" required = "required" placeholder="Type here ..." autofocus="autofocus"/>
+	<input type="hidden" value="{{ uname }}" name="uname"/>
+	<input type = "submit" value = "SEND" class="btn1" id="button"/>
+      </form>
+</div>
+
+   </body>
+<script>
+    var objDiv = document.getElementById("control_scroll");
+    objDiv.scrollTop = objDiv.scrollHeight;
+  
+</script>
+</html>
